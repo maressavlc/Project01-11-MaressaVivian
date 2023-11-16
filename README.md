@@ -3,7 +3,7 @@
 
 # Sobre o projeto
 
-O Sistema de Gestão de Alunos para Academias é uma aplicação Java desenvolvida para otimizar a administração e a personalização do treinamento dos alunos em academias. Este programa visa facilitar o acompanhamento individualizado de cada aluno, levando em consideração seus objetivos, níveis de condicionamento físico e preferências de atividades. 
+O Sistema de Gestão de Alunos para Academias é uma aplicação Java desenvolvida para otimizar a administração e a personalização do treinamento dos alunos em academias. Este programa visa facilitar o acompanhamento individualizado de cada aluno, levando em consideração seus objetivos, níveis de condicionamento físico e  preferências de atividades. 
 
 Público-Alvo:
 O sistema destina-se a academias e centros de treinamento que buscam aprimorar a gestão de alunos e a oferta de programas personalizados. Além disso, é voltado para instrutores, gestores de academia e alunos, proporcionando uma interação simplificada e personalizada para melhorar o planejamento e a execução dos programas de treinamento.
