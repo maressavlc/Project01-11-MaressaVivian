@@ -22,60 +22,67 @@ ArrayList e List: São estruturas de dados da biblioteca padrão do Java. No có
 
 Classes e Objetos: O código utiliza conceitos de orientação a objetos, como classes (Aluno, Exercicio, Academia) e objetos, para organizar e gerenciar os dados.
 
-Métodos CRUD: São implementados para criação, leitura, atualização e remoção de alunos e exercícios na classe Academia.
+Métodos CRUD: São implementados para criação, leitura, atualização e remoção de alunos e exercícios.'
+
+Java Spring JPA: Facilita o acesso e a manipulação de dados relacionais no banco de dados por meio de repositórios, simplificando a implementação das operações CRUD
 
 Utiliza os princípios de orientação a objetos do Java, demonstrando a criação de classes, métodos  e associação entre objetos.
+
 
 
 # Descrição da arquitetura
 
 ## Estrutura das Classes:
-Aluno:
-Representa um aluno da academia.
-Atributos: id, nome, idade, telefone e uma lista de exercícios associados.
-Métodos: Construtor, getters, setters e métodos para adicionar e remover exercícios.
+AlunoController:
+Define endpoints REST para operações CRUD (Create, Read, Update, Delete) relacionadas aos alunos.
+Utiliza métodos HTTP (GET, POST, PUT, DELETE) para buscar, criar, atualizar e deletar alunos.
+Gerencia os dados dos alunos por meio do AlunoRepository e dos exercícios pelo ExercicioRepository.
+Cria cronogramas para os alunos com base nos exercícios disponíveis.
 
-Exercicio:
-Representa um exercício disponível na academia.
-Atributos: id, nome e descrição.
-Métodos: Construtor, getters e setters.
+ExercicioController:
+Define endpoints REST para operações CRUD relacionadas aos exercícios.
+Utiliza métodos HTTP para buscar, criar, atualizar e deletar exercícios.
+Gerencia os dados dos exercícios através do ExercicioRepository.
 
-Academia:
-É responsável por gerenciar alunos e exercícios.
-Atributos: Listas de alunos e exercícios.
-Métodos: Métodos CRUD para alunos (criar, ler, atualizar, deletar) e exercícios.
+CriarCronogramaRequest:
+Define uma classe de modelo para receber requisições para a criação de cronogramas para os alunos, especificando os IDs dos exercícios e o dia da semana.
 
-Main (Classe principal):
-Contém o método main que é responsável por criar instâncias de academia, alunos, exercícios e associá-los.
-Relação entre as Classes:
+Cronograma:
+Representa um cronograma associado a um aluno.
+Mantém uma lista de exercícios (Exercicio) associados ao cronograma.
+Utiliza anotações JPA para mapear o relacionamento muitos-para-muitos entre Cronograma e Exercicio.
 
-Aluno e Exercicio: Um aluno pode ter uma lista de exercícios associados a ele. Essa relação é estabelecida pelo método adicionarExercicio na classe Aluno.
-Academia, Aluno e Exercicio: A classe Academia gerencia as listas de alunos e exercícios. Ela permite criar, ler, atualizar e deletar alunos e exercícios. Há métodos na Academia para associar exercícios a alunos, mas não há uma relação direta entre Academia e Exercicio ou Academia e Aluno além do armazenamento das listas.
+## Relacionamentos entre Classes e Módulos
+Controllers (AlunoController e ExercicioController): Responsáveis por receber as requisições HTTP, processar e redirecionar para a camada de serviço adequada. Usam @Autowired para injetar as dependências dos repositórios.
 
-A arquitetura do código é simples e segue os princípios de orientação a objetos, com classes definidas que representam entidades do domínio (Aluno e Exercicio) e uma classe de gerenciamento (Academia).
-Alunos têm a responsabilidade de manter seus próprios exercícios, a Academia gerencia os alunos e exercícios, e a classe Main é responsável por iniciar o sistema e fazer algumas operações de exemplo.
+Repositories (AlunoRepository, ExercicioRepository, CronogramaRepository): Interfaces que estendem JpaRepository do Spring Data JPA. São responsáveis pela comunicação com o banco de dados, fornecendo métodos para operações de persistência e consulta.
+
+Models (Aluno, Exercicio, CriarCronogramaRequest, Cronograma): Representam os dados manipulados pela aplicação, como alunos, exercícios e cronogramas. São mapeados em entidades do banco de dados por meio de anotações JPA.
 
 # Funcionalidade 
 
-O código apresenta funcionalidades CRUD (Create, Read, Update, Delete) para os objetos Aluno e Exercício, bem como uma classe Academia que gerencia esses objetos.
+As operações CRUD foram implementadas utilizando os métodos HTTP apropriados (GET, POST, PUT, DELETE) e os endpoints RESTful correspondentes.
 
 ## Operações CRUD para Aluno:
-Create (criarAluno): Permite criar um novo aluno e adicioná-lo à lista de alunos da academia.
+Listar Alunos (GET /alunos): Retorna todos os alunos existentes.
 
-Read (lerAluno): Permite ler um aluno com base no ID fornecido.
+Obter Aluno (GET /alunos/{id}): Obtém um aluno específico com base no ID fornecido.
 
-Update (atualizarAluno): Permite atualizar os detalhes de um aluno existente com base no ID fornecido.
+Criar Aluno (POST /alunos): Cria um novo aluno com base nos dados fornecidos no corpo da requisição.
 
-Delete (deletarAluno): Permite deletar um aluno com base no ID fornecido.
+Atualizar Aluno (PUT /alunos/{id}): Atualiza um aluno existente com base no ID fornecido e nos dados fornecidos no corpo da requisição.
 
+Deletar Aluno (DELETE /alunos/{id}): Remove um aluno com base no ID fornecido.
 
 ## Operações CRUD para Exercício:
-Create (criarExercicio): Permite criar um novo exercício e adicioná-lo à lista de exercícios da academia.
+Listar Exercícios (GET /exercicios): Retorna todos os exercícios existentes.
 
-Read (lerExercicio): Permite ler um exercício com base no ID fornecido.
+Obter Exercício (GET /exercicios/{id}): Obtém um exercício específico com base no ID fornecido.
 
-Update (atualizarExercicio): Permite atualizar os detalhes de um exercício existente com base no ID fornecido.
+Criar Exercício (POST /exercicios): Cria um novo exercício com base nos dados fornecidos no corpo da requisição.
 
-Delete (deletarExercicio): Permite deletar um exercício com base no ID fornecido.
+Atualizar Exercício (PUT /exercicios/{id}): Atualiza um exercício existente com base no ID fornecido e nos dados fornecidos no corpo da requisição.
+
+Deletar Exercício (DELETE /exercicios/{id}): Remove um exercício com base no ID fornecido.
 
 
