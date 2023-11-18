@@ -20,6 +20,8 @@ Linguagem Java: É a linguagem de programação utilizada no código. Java é am
 
 ArrayList e List: São estruturas de dados da biblioteca padrão do Java. No código, elas são usadas para armazenar listas de alunos, exercícios e para associar os exercícios a cada aluno.
 
+Tratamento de exceções: Blocos try-catch para capturar exceções que podem surgir durante a execução dos métodos do controlador. Se uma exceção for lançada, a resposta HTTP será definida para um erro interno do servidor (HTTP 500 - INTERNAL_SERVER_ERROR). 
+
 Classes e Objetos: O código utiliza conceitos de orientação a objetos, como classes (Aluno, Exercicio, Academia) e objetos, para organizar e gerenciar os dados.
 
 Métodos CRUD: São implementados para criação, leitura, atualização e remoção de alunos e exercícios.'
