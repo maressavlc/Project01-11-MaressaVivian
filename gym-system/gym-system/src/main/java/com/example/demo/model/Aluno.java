@@ -1,13 +1,12 @@
 package com.example.demo.model;
 
-import java.util.List;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+
 
 @Entity
 public class Aluno {
@@ -17,15 +16,11 @@ public class Aluno {
     private Long id;
     
     private String nome;
-    private int idade;
+    private String idade;
     private String telefone;
 
    
-    public Aluno(String nome, int idade, String telefone) {
-        this.nome = nome;
-        this.idade = idade;
-        this.telefone = telefone;
-    }
+  
 
    
     public Long getId() {
@@ -44,11 +39,11 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public int getIdade() {
+    public String getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(String idade) {
         this.idade = idade;
     }
 

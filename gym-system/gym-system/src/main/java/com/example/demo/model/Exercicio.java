@@ -19,9 +19,7 @@ public class Exercicio {
     private String nome;
     private String descricao;
 
-    @ManyToMany(mappedBy = "exercicios")
-    private List<Aluno> alunos = new ArrayList<>();
-
+    
 	public Long getId() {
 		return id;
 	}
@@ -46,13 +44,5 @@ public class Exercicio {
 		this.descricao = descricao;
 	}
 
-	public List<Aluno> getAlunos() {
-		return alunos;
-	}
-
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
-	}
-
-  
 }
+

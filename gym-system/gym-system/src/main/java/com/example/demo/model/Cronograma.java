@@ -12,14 +12,9 @@ public class Cronograma {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    
     private Aluno aluno;
 
-    @ManyToMany
-    @JoinTable(
-        name = "cronograma_exercicios",
-        joinColumns = @JoinColumn(name = "cronograma_id"),
-        inverseJoinColumns = @JoinColumn(name = "exercicio_id"))
     private List<Exercicio> exercicios;
 
     @Enumerated(EnumType.STRING)
